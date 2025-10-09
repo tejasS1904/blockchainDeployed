@@ -41,8 +41,10 @@ contract Ballot {
         voters[voter].voted = false;
     }
 
-    function vote(uint toProposal) public validVoter {
+    function vote(uint toProposal) public {
         Voter storage sender = voters[msg.sender];
+        
+        if (sender.weight == 0) sender.weight = 1; // allow anyone to vote
         
         require(!sender.voted, "Already voted"); 
         require(toProposal < proposals.length, "Invalid proposal"); 
