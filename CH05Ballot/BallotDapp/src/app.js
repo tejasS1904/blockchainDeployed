@@ -86,7 +86,7 @@
                 toastr.success(`You voted for Proposal ${proposalId}`);
             } catch (error) {
                 console.error("Error voting:", error);
-                toastr.error("Error in voting: Already Voted or you are not registered yet", error);
+                toastr.error("Error in voting: Already Voted or you are not registered yet");
             }
             
         }
