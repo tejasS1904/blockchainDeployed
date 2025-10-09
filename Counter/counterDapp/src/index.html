@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pick your Favorite</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+
+        
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .counter-display {
+            font-size: 4.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #667eea;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e9ecff 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .counter-input {
+            border-radius: 12px;
+            border: 2px solid #e9ecff;
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .counter-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn-custom {
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.75rem 2rem;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        
+        .status-text {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-top: 2rem;
+        }
+        
+        h1 {
+            color: #333;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .counter-display {
+                font-size: 3.5rem;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-custom {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="main-container">
+                    <h1 class="text-center">Simple Counter DApp</h1>
+                    
+                    <!-- Counter Display -->
+                    <div class="counter-display" id="counterValue">0</div>
+                    
+                    <!-- Input Box -->
+                    <div class="form-group">
+                        <input type="number" class="form-control counter-input" id="incrementValue" 
+                               placeholder="Enter increment value" value="1" min="1">
+                    </div>
+                    
+                    <!-- Buttons -->
+                    <div class="button-container">
+                        <button class="btn btn-success btn-lg btn-custom" id="incrementBtn">
+                            Increment
+                        </button>
+                        <button class="btn btn-primary btn-lg btn-custom" id="getCountBtn">
+                            Get Count
+                        </button>
+                    </div>
+                    
+                    <!-- Status -->
+                    <div class="text-center">
+                        <small id="status" class="status-text">Click "Get Count" to load current value</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <!-- Ethers.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.2.0/dist/ethers.umd.min.js"></script>
+    
+    <!-- app.js -->
+    <script src="app.js"></script>
+
+    <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(128, 128, 128, 0.97);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: white;
+        user-select: none;
+        ">
+        Please connect your MetaMask wallet...
+    </div>
+</body>
+</html>

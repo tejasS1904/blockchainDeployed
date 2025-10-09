@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blind Bidding App</title>
+
+  <!-- Bootstrap 4 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body>
+  <div class="content py-4">
+    <div class="container">
+      
+      <!-- Header -->
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2>ETH - Blind Auction</h2>
+          <h3>May the highest bidder win!</h3>
+        </div>
+      </div>
+
+      <!-- Account Info -->
+      <div class="row mb-3">
+        <div class="col text-center">
+          <p>
+            <strong>Current Account:</strong> <span id="current_account"></span>,
+            <strong>Balance (ETH):</strong> <span id="current_balance"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Auction Section -->
+      <div class="row">
+        <div class="col-lg-4 text-center mb-4">
+          <img src="item.jpeg" alt="Auction Item" height="400" width="280"
+            style="box-shadow: -1px -1px 4px 4px #2f2c13;">
+        </div>
+
+        <div class="col-lg-8">
+          <h2 class="text-center mb-4">Bid on this vintage painting!</h2>
+
+          <!-- tools to get a blinded bid-->
+            <div class="form-group">
+                <label><strong>Generate your blinded bid:</strong></label>
+                <input type="text" class="form-control" id="bid-value" placeholder="Enter your bid amount in ETH">
+            </div>
+            <div class="form-group">
+                <label><strong>Enter a secret OTP:</strong></label>
+                <input type="text" class="form-control" id="otp-value" placeholder="Enter a secret OTP">
+            </div>
+            <div class="form-group">
+                <label><strong>Your blinded bid (in bytes):</strong></label>
+                <input type="text" class="form-control" id="blinded-bid-value" readonly>
+            </div>
+            <div class="text-center my-3">
+                <button type="submit" id="generate-blinded-bid" class="btn btn-primary">Generate Blinded Bid</button>
+            </div>
+            
+
+          <!-- Bidding Form -->
+          <div class="form-group">
+            <label><strong>Enter blinded bid:</strong></label>
+            <input type="text" class="form-control" id="blinded-bid-value-userinp" placeholder="Enter in bytes">
+          </div>
+
+          <div class="form-group">
+            <label><strong>Enter deposit amount:</strong></label>
+            <input type="text" class="form-control" id="deposit-value">
+          </div>
+
+          <div class="text-center my-3">
+            <button type="submit" id="submit-bid" class="btn btn-primary">Bid</button>
+          </div>
+
+
+          <!-- Reveal Section -->
+          <div class="form-group">
+            <label><strong>Reveal your bid:</strong></label>
+            <input type="text" class="form-control" id="bet-reveal">
+          </div>
+
+          <div class="form-group">
+            <label><strong>Enter the OTP:</strong></label>
+            <input type="text" class="form-control" id="password">
+          </div>
+
+          <div class="text-center my-3">
+            <button type="submit" id="submit-reveal" class="btn btn-primary">Reveal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase Notification and Controls -->
+      <div class="row my-4">
+        <div class="col text-center" style="font-size: 20px;">
+          Current phase: <span id="phase-notification-text"></span>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col text-center">
+          <button type="submit" id="withdraw-bid" class="btn btn-primary">Withdraw</button>
+          &nbsp;&nbsp;
+          <button type="submit" id="generate-winner" class="btn btn-primary">Show winning bid</button>
+        </div>
+      </div>
+
+      <!-- Winner Display -->
+      <div id="winner" class="text-center"></div>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(128, 128, 128, 0.97);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: white;
+        user-select: none;
+      ">
+    Please connect your MetaMask wallet...
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.2.0/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
