@@ -172,9 +172,11 @@
         document.querySelectorAll('.btn-vote').forEach(button => {
             button.addEventListener('click', (event) => myApp.handleVote(event));
         });
+        /*
         document.getElementById("register-voter").addEventListener("click", () => {
             myApp.registerVoter();
         });
+        */
     
         document.getElementById("declare-winner").addEventListener("click", () => {
             myApp.declareWinner();
