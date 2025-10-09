@@ -1,6 +1,6 @@
 class App {
     constructor() {
-        this.ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        this.ContractAddress = "0xDF2366fc1a6462C494200532e3A3605325285626";
         this.AbiLocation = "./BlindAuction.json";
         this.ContractABI = null;
         this.signer = null;
