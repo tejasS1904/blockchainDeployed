@@ -1,6 +1,6 @@
     class App {
         constructor() {
-            this.ContractAddress = "0xE982F90a90074f3C4F0B788625Be1A6139364e93";
+            this.ContractAddress = "0x1C2dD37091b9dF7a060f6BDEd3bf3AB8F4ed152B";
             this.AbiLocation = "./Ballot.json";
             this.ContractABI = null;
             this.signer = null;
@@ -82,8 +82,10 @@
                 await tx.wait();
         
                 console.log("Vote successful:", tx);
+                
+                const proposalNames = ["Milli", "Murphy", "Radar", "Riley"];
                 console.log(`You voted for Proposal ${proposalId}`);
-                toastr.success(`You voted for Proposal ${proposalId}`);
+                toastr.success(`You voted for Proposal ${proposalNames[proposalId]}`);
             } catch (error) {
                 console.error("Error voting:", error);
                 toastr.error("Error in voting: Already Voted");
