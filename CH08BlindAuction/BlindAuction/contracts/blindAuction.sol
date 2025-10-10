@@ -46,7 +46,7 @@ contract BlindAuction {
     }
 
     function bid(bytes32 blindBid) public payable validPhase(Phase.Bidding) {
-        require(msg.sender != beneficiary,'beneficiaryBid');
+        //require(msg.sender != beneficiary,'beneficiaryBid');
         bids[msg.sender] = Bid({
             blindedBid: blindBid,
             deposit: msg.value
@@ -54,7 +54,7 @@ contract BlindAuction {
     }
 
     function reveal(uint value, bytes32 secret) public validPhase(Phase.Reveal) {
-        require(msg.sender != beneficiary, 'beneficiaryReveal');
+        //require(msg.sender != beneficiary, 'beneficiaryReveal');
         uint refund = 0;
         Bid storage bidToCheck = bids[msg.sender];
 
