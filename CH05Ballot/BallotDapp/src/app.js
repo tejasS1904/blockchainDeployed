@@ -155,8 +155,8 @@
     
             } catch (error) {
                 
-                toastr.error("Error declaring winner: Atleast 3 votes required " + error.message);
-            
+                toastr.error("Error declaring winner: Atleast 3 votes required "); //+ error.message);
+                console.log(error.message);
                 
                 const winnerResult = document.getElementById("winner-result");
                 winnerResult.style.display = "none";
