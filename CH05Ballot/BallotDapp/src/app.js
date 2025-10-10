@@ -85,7 +85,7 @@
                 
                 const proposalNames = ["Milli", "Murphy", "Radar", "Riley"];
                 console.log(`You voted for Proposal ${proposalId}`);
-                toastr.success(`You voted for Proposal ${proposalNames[proposalId]}`);
+                toastr.success(`You voted for ${proposalNames[proposalId]}`);
             } catch (error) {
                 console.error("Error voting:", error);
                 toastr.error("Error in voting: Already Voted");
