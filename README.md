@@ -41,3 +41,4 @@ Deploy this repo as GitHub Pages if not already done , that’s it!
 
 ### Notes
 For the Ballot DApp, the **register voter** functionality has been commented out in the frontend, and the contract function modified to not require registration.
+For the Blind Auction App the **contract** has been modified so the beneficiary can also place bids
