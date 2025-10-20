@@ -1,6 +1,6 @@
     class App {
         constructor() {
-            this.ContractAddress = "0x6E121a29D0F152b997810E71F76F93a0CAd72D05";
+            this.ContractAddress = "0xddaAd340b0f1Ef65169Ae5E41A8b10776a75482d";
             this.AbiLocation = "./Counter.json";
             this.ContractABI = null;
             this.signer = null;
@@ -54,6 +54,30 @@
                 console.error("MetaMask connection failed:", error);
             }
         }
+        async initialize() {
+            if (!this.walletConnected) {
+                this.updateStatus("Please connect MetaMask first");
+                return;
+            }
+
+            try {
+                const initValue = parseInt(document.getElementById('initValue').value) || 1;
+                this.updateStatus("Sending transaction...");
+                
+                let tx;
+                tx = await this.contract.initialize(initValue);
+
+                this.updateStatus("Transaction sent, waiting for confirmation...");
+                await tx.wait();
+                
+                this.updateStatus("Initialization successful!");
+                setTimeout(() => this.getCount(), 500);
+
+            } catch (error) {
+                console.error("Initialization failed:", error);
+                // this.updateStatus("Initialization failed: " + error.message);
+            }
+        }
 
         async increment() {
             if (!this.walletConnected) {
@@ -66,52 +90,44 @@
                 this.updateStatus("Sending transaction...");
                 
                 let tx;
-                if (incrementValue === 1) {
-                    tx = await this.contract.inc();
-                } else {
-                    tx = await this.contract.incBy(incrementValue);
-                }
-                
+                tx = await this.contract.increment(incrementValue);
+
                 this.updateStatus("Transaction sent, waiting for confirmation...");
                 await tx.wait();
                 
                 this.updateStatus("Increment successful!");
-                setTimeout(() => this.getCount(), 1000);
+                setTimeout(() => this.getCount(), 500);
 
             } catch (error) {
                 console.error("Increment failed:", error);
-                this.updateStatus("Increment failed: " + error.message);
+                // this.updateStatus("Increment failed: " + error.message);
             }
         }
 
-        // async decrement() {
-        //     if (!this.walletConnected) {
-        //         this.updateStatus("Please connect MetaMask first");
-        //         return;
-        //     }
+        async decrement() {
+            if (!this.walletConnected) {
+                this.updateStatus("Please connect MetaMask first");
+                return;
+            }
 
-        //     try {
-        //         const decrementValue = parseInt(document.getElementById('incrementValue').value) || 1;
-        //         this.updateStatus("Getting current count...");
+            try {
+                const decrementValue = parseInt(document.getElementById('decrementValue').value) || 1;
+                this.updateStatus("Sending transaction...");
                 
-        //         const currentCount = await this.contract.x();
-        //         const currentValue = currentCount.toNumber();
+                let tx;
+                tx = await this.contract.decrement(decrementValue);
+
+                this.updateStatus("Transaction sent, waiting for confirmation...");
+                await tx.wait();
                 
-        //         if (currentValue < decrementValue) {
-        //             this.updateStatus(`Cannot decrement by ${decrementValue}. Current value is ${currentValue}`);
-        //             return;
-        //         }
+                this.updateStatus("Decrement successful!");
+                setTimeout(() => this.getCount(), 1000);
 
-        //         // Since the contract doesn't have a decrement function, we'll simulate it
-        //         // by calculating the new value and setting it (this is a limitation of your current contract)
-        //         this.updateStatus("Note: Contract only supports increment. Cannot decrement.");
-
-        //     } catch (error) {
-        //         console.error("Decrement failed:", error);
-        //         this.updateStatus("Decrement failed: " + error.message);
-        //     }
-        // }
-
+            } catch (error) {
+                console.error("Decrement failed:", error);
+                // this.updateStatus("Decrement failed: " + error.message);
+            }
+        }
         async getCount() {
             if (!this.walletConnected) {
                 this.updateStatus("Please connect MetaMask first");
@@ -120,20 +136,20 @@
 
             try {
                 this.updateStatus("Getting count...");
-                const result = await this.contract.x();
-                const count = result.toNumber();
+                const result = await this.contract.get();
+                const count = result.toString();
                 
                 document.getElementById('counterValue').textContent = count;
                 this.updateStatus("Count updated successfully");
 
             } catch (error) {
                 console.error("Get count failed:", error);
-                this.updateStatus("Failed to get count: " + error.message);
+                // this.updateStatus("Failed to get count: " + error.message);
             }
         }
 
         updateStatus(message) {
-            document.getElementById('status').textContent = message;
+            document.getElementById('statusMessage').textContent = message;
         }
     }
 
@@ -142,13 +158,17 @@
         const myApp = new App();
         await myApp.connectMetaMaskAndContract();
 
+        document.getElementById('initBtn').addEventListener('click', () => {
+            myApp.initialize();
+        });
+
         document.getElementById('incrementBtn').addEventListener('click', () => {
             myApp.increment();
         });
 
-        // document.getElementById('decrementBtn').addEventListener('click', () => {
-        //     myApp.decrement();
-        // });
+        document.getElementById('decrementBtn').addEventListener('click', () => {
+            myApp.decrement();
+        });
 
         document.getElementById('getCountBtn').addEventListener('click', () => {
             myApp.getCount();
