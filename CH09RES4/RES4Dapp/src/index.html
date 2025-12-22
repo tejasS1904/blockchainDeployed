@@ -33,12 +33,12 @@
 
           <div class="form-group">
             <label>Price</label>
-            <input type="number" class="form-control" id="asset_add_price">
+            <input type="number" class="form-control" id="asset_add_price" placeholder="Enter asset price">
           </div>
 
           <div class="form-group">
             <label>Owner (address)</label>
-            <input type="text" class="form-control" id="asset_add_owner">
+            <input type="text" class="form-control" id="asset_add_owner" placeholder="Asset receiver address">
           </div>
 
           <button type="button" id="add_asset" class="btn btn-info">Add</button>
@@ -56,12 +56,12 @@
 
           <div class="form-group">
             <label>Asset Id</label>
-            <input type="text" class="form-control" id="assess_asset_id">
+            <input type="text" class="form-control" id="assess_asset_id" placeholder="Enter asset id">
           </div>
 
           <div class="form-group">
             <label>Assess value</label>
-            <input type="text" class="form-control" id="assess_value">
+            <input type="text" class="form-control" id="assess_value" placeholder="Enter value">
           </div>
 
           <button type="button" id="appreciate_asset" class="btn btn-info btn-sm">Appreciate</button>
@@ -80,12 +80,12 @@
 
           <div class="form-group">
             <label>Asset Id</label>
-            <input type="text" class="form-control" id="build_asset_id">
+            <input type="text" class="form-control" id="build_asset_id" placeholder="Enter asset id">
           </div>
 
           <div class="form-group">
             <label>Build value</label>
-            <input type="text" class="form-control" id="build_asset_value">
+            <input type="text" class="form-control" id="build_asset_value" placeholder="Enter build value">
           </div>
 
           <button type="button" id="build_asset" class="btn btn-primary">Build</button>
@@ -103,12 +103,12 @@
 
           <div class="form-group">
             <label>Asset Id</label>
-            <input type="text" class="form-control" id="approve_asset_id">
+            <input type="text" class="form-control" id="approve_asset_id" placeholder="Enter asset id">
           </div>
 
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" id="approve_asset_address">
+            <input type="text" class="form-control" id="approve_asset_address" placeholder="Enter address">
           </div>
 
           <button type="button" id="approve_asset" class="btn btn-primary">Approve</button>
@@ -125,69 +125,4 @@
         <form>
           <h3>Buy</h3>
 
-          <div class="form-group">
-            <label>From</label>
-            <input type="text" class="form-control" id="buy_asset_address">
-          </div>
-
-          <div class="form-group">
-            <label>Asset Id</label>
-            <input type="text" class="form-control" id="buy_asset_id">
-          </div>
-
-          <button type="button" id="transfer_asset" class="btn btn-success">Buy</button>
-
-          <p class="form-text text-muted mt-2">
-            Only an approved party can purchase the asset.
-          </p>
-        </form>
-      </div>
-
-    </div>
-
-    <hr>
-
-    <!-- Assets -->
-    <div class="col-lg-12">
-      <h3>Available assets</h3>
-      <span id="balance"></span>
-
-      <div class="card-group" id="assets">
-        <div class="col-lg-3">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Asset #1</h6>
-              <p class="card-text">Price: 10 ETH</p>
-            </div>
-            <div class="card-footer">
-              <small>
-                <b>Owner:</b> 0x123...abc<br>
-                <b>Approved:</b> 0x456...def
-              </small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .container {
-      margin-left: 5%;
-      margin-right: 5%;
-      padding: 0;
-      max-width: -webkit-fill-available;
-    }
-
-    .forms {
-      margin-right: 3%;
-      border-right: 1px solid #bebebe;
-    }
-  </style>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="app.js"></script>
-</body>
-
-</html>
+          <div
