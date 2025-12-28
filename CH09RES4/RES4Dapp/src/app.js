@@ -64,6 +64,7 @@ class App {
             toastr.success("Asset added successfully!");
             
         } catch (error) {
+            console.log(error)
             toastr.error("Failed to add asset: " + (error.reason || error.message));
         }
     }
