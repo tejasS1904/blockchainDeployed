@@ -63,10 +63,21 @@ class App {
             await this.loadAvailableAssets();
             toastr.success("Asset added successfully!");
             
-        } catch (error) {
-            console.log(error)
-            toastr.error("Failed to add asset: " + (error.reason || error.message));
-        }
+        } catch (err) {
+              console.error("Full error:", err);
+            
+              const reason =
+                err?.error?.message ||      
+                err?.error?.data?.message ||
+                err?.data?.message ||
+                err?.reason ||
+                err?.shortMessage ||
+                err?.message ||
+                "Transaction failed";
+            
+              toastr.error("Failed to add asset: " + reason);
+            }
+
     }
     
     async appreciateAsset() {
