@@ -1,6 +1,6 @@
 class App {
     constructor() {
-        this.ContractAddress = "0xa05298B735CC77790400CABbBB5fC00D246201A3";
+        this.ContractAddress = "0x9Dcb6D5045878A38Ea99711520bcE16174021e01";
         this.AbiLocation = "./yoda.json";
         this.ContractABI = null;
         this.signer = null;
@@ -88,5 +88,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('receiveTokensBtn').addEventListener('click', () => {
         myApp.receiveTokens();
     });
+
 
 });
