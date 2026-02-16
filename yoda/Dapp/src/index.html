@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Counter Dapp</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .btn-fixed-width {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center text-center mt-5">
+            <div class="col-md-8 col-lg-6">
+                <h3 class="mb-4">Receive yoda Tokens</h3>
+
+                <!-- Get Tokens -->
+                <div class="form-group d-flex justify-content-center align-items-center mb-3">
+                    <button class="btn btn-success btn-lg btn-fixed-width" id="receiveTokensBtn">Get Yoda</button>
+                </div>
+
+                <small id="statusMessage" class="form-text text-muted"></small>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Ethers.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.2.0/dist/ethers.umd.min.js"></script>
+
+    <!-- app.js -->
+    <script src="app.js"></script>
+
+    <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(128, 128, 128, 0.97);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: white;
+        user-select: none;
+        ">
+        Please connect your MetaMask wallet...
+    </div>
+</body>
+</html>
