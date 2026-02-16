@@ -49,6 +49,8 @@ class App {
 
             console.log("Connected to MetaMask and contract successfully.");
             console.log("User Address:", this.userAddress);
+            console.log("Contract Address:", this.ContractAddress);
+            document.getElementById('contractAddressMessage').textContent = "Contract Address:" + this.ContractAddress;
 
         } catch (error) {
             console.error("MetaMask connection failed:", error);
@@ -92,4 +94,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
+
 
