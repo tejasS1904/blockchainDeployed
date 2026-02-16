@@ -66,7 +66,7 @@ class App {
         }
         try {
             this.updateStatus("Requesting tokens...");
-            let tx = await this.contract.recieveTokens();
+            let tx = await this.contract.receiveTokens();
             this.updateStatus("Transaction sent, waiting for confirmation...");
             await tx.wait();
             this.updateStatus("Tokens received successfully!");
@@ -74,6 +74,7 @@ class App {
         } catch (error) {
             console.error("Failed to receive tokens:", error);
             console.log("Failed to receive tokens: " + error.message);
+            this.updateStatus("Error In Requesting tokens");
             toastr.error("Failed to receive tokens: You have probably already received your tokens once");
         }
     }
@@ -91,3 +92,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
+
